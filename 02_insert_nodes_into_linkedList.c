@@ -8,32 +8,34 @@ typedef struct	node
 }	Node;
 
 void	printList(Node	*head);
+Node    *insertAtHead(Node  *head, int newValue);
 
 int	main()
 {
-	Node	a;
-	Node	b;
-	Node	c;
+	Node	*list1_head;
 
-	a.value = 5;
-	b.value = 6;
-	c.value = 7;
-	a.next = &b;
-	b.next = &c;
-	c.next = NULL;
+    list1_head = NULL;
 
-	printList( &a );
+	printList(list1_head);
 
 	return (0);
+}
+
+Node    *insertAtHead(Node  *head, int newValue)
+{
+    Node    *newNode = calloc(1, sizeof(Node));
+    newNode->value = newValue;
+
+    if (head == NULL)
+        return (newNode);
+
 }
 
 void	printList(Node	*head)
 {
 	Node	*current;
-	int		i;
-
 	current = head;
-	i = 0;
+	int i = 0;
 
 	while (current != NULL)
 	{
