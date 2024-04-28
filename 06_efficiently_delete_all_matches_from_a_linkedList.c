@@ -23,8 +23,9 @@ void	replaceMatches(Node	*node, int findValue,
 Node	*deleteFirstMatch(Node	*head, int deleteValue,
 								bool *wasDeleted);	// DELETE the first node to have a MATCHING value with the passed value
 Node	*deleteAllMatches(Node	*head, int deleteValue,
-								int *numDeleted);	// DELETE all node to have a MATCHING value with the passed value
-
+								int *numDeleted);	// DELETE all nodes with a value MATCHING with the passed value
+Node	*efficientDeleteAllMatches(Node	*head, int deleteValue,
+								int *numDeleted);	// Efficiently DELETE all nodes with a value MATCHING with the passed value
 
 int	main()
 {
@@ -32,61 +33,66 @@ int	main()
 
 	myListHead = NULL;
 
+	myListHead = insertAtTail(myListHead, 5);
 	myListHead = insertAtHead(myListHead, 7);
 	myListHead = insertAtHead(myListHead, 5);
 	myListHead = insertAtHead(myListHead, 3);
 	myListHead = insertAtTail(myListHead, 5);
 	myListHead = insertAtTail(myListHead, 10);
-	myListHead = insertAtTail(myListHead, 10);
-	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 5);
+	myListHead = insertAtTail(myListHead, 5);
 	myListHead = insertAtTail(myListHead, 12);
-	myListHead = insertAtTail(myListHead, 14);
+	myListHead = insertAtTail(myListHead, 5);
 
-	// bool	deleted;
 	printf("\nList before DELETING Matches...\n");
 	printList(myListHead);
-	// myListHead = deleteFirstMatch(myListHead, 3, &deleted);	// DELETE the first node to have a MATCHING value
-	// if (deleted)
-	// {
-	// 	printf("\nA node with value 3 was deleted!\n");
-	// 	printf("List after DELETING...\n");
-	// 	printList(myListHead);
-	// }
-	// else
-	// 	printf("\nA node with value 3 was not deleted!\n");
-
-	// myListHead = deleteFirstMatch(myListHead, 8, &deleted);	// DELETE the first node to have a MATCHING value
-	// if (deleted)
-	// {
-	// 	printf("\nA node with value 8 was deleted!\n");
-	// 	printf("List after DELETING...\n");
-	// 	printList(myListHead);
-	// }
-	// else
-	// 	printf("\nA node with value 8 was not deleted!\n");
-
-	// myListHead = deleteFirstMatch(myListHead, 10, &deleted);	// DELETE the first node to have a MATCHING value
-	// if (deleted)
-	// {
-	// 	printf("\nA node with value 10 was deleted!\n");
-	// 	printf("List after DELETING...\n");
-	// 	printList(myListHead);
-	// }
-	// else
-	// 	printf("\nA node with value 10 was not deleted!\n\n");
 
 	int	numDeleted;
-	myListHead = deleteAllMatches(myListHead, 5, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
-	printf("\n%d nodes with value 5 was deleted!\n", numDeleted);
+	myListHead = efficientDeleteAllMatches(myListHead, 5, &numDeleted);	// Efficiently DELETE all nodes with a value MATCHING with the passed value
+	printf("\n%d elements/nodes with value 5 was deleted!\n", numDeleted);
 	printf("List after DELETING...\n");
-	printList(myListHead);	
-
-	myListHead = deleteAllMatches(myListHead, 10, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
-	printf("\n%d nodes with value 10 was deleted!\n", numDeleted);
-	printf("List after DELETING...\n");
-	printList(myListHead);	
+	printList(myListHead);
 
 	return (0);
+}
+
+Node	*efficientDeleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// Efficiently DELETE all nodes with a value MATCHING with the passed value
+{
+	*numDeleted = 0;
+	if (head == NULL)
+		return (NULL);
+
+	Node	*current = head;
+	Node	*temp;
+	Node	*newHead;
+
+	while (current->value == deleteValue)
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+		*numDeleted = *numDeleted + 1;
+
+		if (current == NULL)
+			return (NULL);
+	}
+
+	newHead = current;
+
+	while (current->next != NULL)
+	{
+		if (current->next->value == deleteValue)
+		{
+			temp = current->next;
+			current->next = current->next->next;
+			free(temp);
+			*numDeleted = *numDeleted + 1;
+		}
+		else
+			current = current->next;
+	}
+
+	return (newHead);
 }
 
 Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE the first node to have a MATCHING value with the passed value
@@ -126,7 +132,7 @@ Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE 
 	return (head);
 }
 
-Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes to have a MATCHING value with the passed value
+Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes with a value MATCHING with the passed value
 {
 	Node	*current = head;
 	bool	deleted = false;

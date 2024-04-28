@@ -23,7 +23,7 @@ void	replaceMatches(Node	*node, int findValue,
 Node	*deleteFirstMatch(Node	*head, int deleteValue,
 								bool *wasDeleted);	// DELETE the first node to have a MATCHING value with the passed value
 Node	*deleteAllMatches(Node	*head, int deleteValue,
-								int *numDeleted);	// DELETE all node to have a MATCHING value with the passed value
+								int *numDeleted);	// DELETE all nodes with a value MATCHING with the passed value
 
 
 int	main()
@@ -44,6 +44,7 @@ int	main()
 
 	printf("\nList before DELETING Matches...\n");
 	printList(myListHead);
+	
 	// bool	deleted;
 	// myListHead = deleteFirstMatch(myListHead, 3, &deleted);	// DELETE the first node to have a MATCHING value
 	// if (deleted)
@@ -76,12 +77,12 @@ int	main()
 	// 	printf("\nA node with value 10 was not deleted!\n\n");
 
 	int	numDeleted;
-	myListHead = deleteAllMatches(myListHead, 5, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
+	myListHead = deleteAllMatches(myListHead, 5, &numDeleted);	// DELETE all nodes with a value MATCHING with the passed value
 	printf("\n%d nodes with value 5 was deleted!\n", numDeleted);
 	printf("List after DELETING...\n");
 	printList(myListHead);	
 
-	myListHead = deleteAllMatches(myListHead, 10, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
+	myListHead = deleteAllMatches(myListHead, 10, &numDeleted);	// DELETE all nodes with a value MATCHING with the passed value
 	printf("\n%d nodes with value 10 was deleted!\n", numDeleted);
 	printf("List after DELETING...\n");
 	printList(myListHead);	
@@ -126,7 +127,7 @@ Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE 
 	return (head);
 }
 
-Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes to have a MATCHING value with the passed value
+Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes with a value MATCHING with the passed value
 {
 	Node	*current = head;
 	bool	deleted = false;
