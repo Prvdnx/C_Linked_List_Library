@@ -16,29 +16,29 @@ Node	*deleteAtTail(Node 	*head);		// DELETE at the TAIL of a Linked List
 
 int	main()
 {
-	Node	*list1_head;
+	Node	*myListHead;
 
-	list1_head = NULL;
+	myListHead = NULL;
 
-	list1_head = insertAtHead(list1_head, 7);
-	list1_head = insertAtHead(list1_head, 5);
-	list1_head = insertAtHead(list1_head, 3);
-	list1_head = insertAtTail(list1_head, 10);
-	list1_head = insertAtTail(list1_head, 12);
-	list1_head = insertAtTail(list1_head, 14);
+	myListHead = insertAtHead(myListHead, 7);
+	myListHead = insertAtHead(myListHead, 5);
+	myListHead = insertAtHead(myListHead, 3);
+	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 12);
+	myListHead = insertAtTail(myListHead, 14);
 
 	printf("\nBefore DELETE at HEAD and TAIL...\n");
-	printList(list1_head);
+	printList(myListHead);
 
-	list1_head = deleteAtHead(list1_head);
-	list1_head = deleteAtHead(list1_head);
+	myListHead = deleteAtHead(myListHead);
+	myListHead = deleteAtHead(myListHead);
 	printf("After DELETE at HEAD...\n");
-	printList(list1_head);
+	printList(myListHead);
 
-	list1_head = deleteAtTail(list1_head);
-	list1_head = deleteAtTail(list1_head);
+	myListHead = deleteAtTail(myListHead);
+	myListHead = deleteAtTail(myListHead);
 	printf("After DELETE at TAIL...\n");
-	printList(list1_head);
+	printList(myListHead);
 
 	return (0);
 }

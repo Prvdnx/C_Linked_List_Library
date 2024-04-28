@@ -14,18 +14,18 @@ Node	*insertAtTail(Node 	*head, int newValue);		// INSERT at the TAIL of a Linke
 
 int	main()
 {
-	Node	*list1_head;
+	Node	*myListHead;
 
-	list1_head = NULL;
+	myListHead = NULL;
 
-	list1_head = insertAtHead(list1_head, 7);
-	list1_head = insertAtHead(list1_head, 5);
-	list1_head = insertAtHead(list1_head, 3);
-	list1_head = insertAtTail(list1_head, 10);
-	list1_head = insertAtTail(list1_head, 12);
-	list1_head = insertAtTail(list1_head, 14);
+	myListHead = insertAtHead(myListHead, 7);
+	myListHead = insertAtHead(myListHead, 5);
+	myListHead = insertAtHead(myListHead, 3);
+	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 12);
+	myListHead = insertAtTail(myListHead, 14);
 
-	printList(list1_head);
+	printList(myListHead);
 
 	return (0);
 }
