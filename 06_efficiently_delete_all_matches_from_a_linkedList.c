@@ -2,6 +2,7 @@
 #include	<stdio.h>
 #include	<stdlib.h>
 #include	<stdbool.h>
+#include	<time.h>
 
 typedef struct	node
 {
@@ -52,6 +53,28 @@ int	main()
 	printf("\n%d elements/nodes with value 5 was deleted!\n", numDeleted);
 	printf("List after DELETING...\n");
 	printList(myListHead);
+
+	//// To COMPARE the 2 DELETE All Matches Functions ////
+	Node	*otherList1 = NULL;
+	Node	*otherList2 = NULL;
+	for (int i = 0; i < 50000; i++) 
+		otherList1 = insertAtHead(otherList1, i % 10);
+	for (int i = 0; i < 50000; i++) 
+		otherList2 = insertAtHead(otherList2, i % 10);
+
+	clock_t	tic;
+	clock_t	toc;
+	tic = clock();
+	otherList1 = deleteAllMatches(otherList1, 4, &numDeleted);	// DELETE Matches
+	toc = clock();
+	printf("\n\ndeleteAllMatches time: %fs\n", (double) (toc - tic) / CLOCKS_PER_SEC);
+	printf("elements/nodes deleted: %d\n", numDeleted);
+
+	tic = clock();
+	otherList2 = efficientDeleteAllMatches(otherList2, 4, &numDeleted);	// Efficiently DELETE Matches
+	toc = clock();
+	printf("\nefficientDeleteAllMatches time: %fs\n", (double) (toc - tic) / CLOCKS_PER_SEC);
+	printf("elements/nodes deleted: %d\n\n", numDeleted);
 
 	return (0);
 }
