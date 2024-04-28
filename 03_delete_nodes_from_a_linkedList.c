@@ -11,6 +11,8 @@ typedef struct	node
 void	printList(Node	*head);
 Node	*insertAtHead(Node	*head, int newValue);
 Node	*insertAtTail(Node 	*head, int newValue);
+Node	*deleteAtHead(Node	*head);
+Node	*deleteAtTail(Node 	*head);
 
 int	main()
 {
