@@ -16,7 +16,7 @@ Node	*insertAtTail(Node *head, int newValue);
 Node	*deleteAtHead(Node *head);
 Node	*deleteAtTail(Node *head);
 int		length(Node *head);		// Find the LENGTH of a Linked List
-int		recursiveLength(Node *node);		// Find the LENGTH of a Linked List recursively
+int		recursiveLength(Node *node);	// Find the LENGTH of a Linked List recursively
 bool	isMember(Node *node, int findValue);	// SEARCH for a MEMBER in a Linked List
 int		countMatches(Node *node, int findValue);	// Find & COUNT Matches in a Linked List
 void	replaceMatches(Node	*node, int findValue,
