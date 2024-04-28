@@ -42,9 +42,9 @@ int	main()
 	myListHead = insertAtTail(myListHead, 12);
 	myListHead = insertAtTail(myListHead, 14);
 
-	// bool	deleted;
 	printf("\nList before DELETING Matches...\n");
 	printList(myListHead);
+	// bool	deleted;
 	// myListHead = deleteFirstMatch(myListHead, 3, &deleted);	// DELETE the first node to have a MATCHING value
 	// if (deleted)
 	// {
