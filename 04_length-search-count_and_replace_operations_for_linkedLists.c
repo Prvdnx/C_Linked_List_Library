@@ -11,8 +11,10 @@ typedef struct	node
 void	printList(Node	*head);
 Node	*insertAtHead(Node	*head, int newValue);
 Node	*insertAtTail(Node 	*head, int newValue);
-Node	*deleteAtHead(Node	*head);		// DELETE at the HEAD of a Linked List
-Node	*deleteAtTail(Node 	*head);		// DELETE at the TAIL of a Linked List
+Node	*deleteAtHead(Node	*head);
+Node	*deleteAtTail(Node 	*head);
+int		length(Node	*head);		// Find the LENGTH of a Linked List
+
 
 int	main()
 {
@@ -27,18 +29,22 @@ int	main()
 	list1_head = insertAtTail(list1_head, 12);
 	list1_head = insertAtTail(list1_head, 14);
 
-	printf("\nBefore delete at HEAD and TAIL...\n");
+	printf("\nLinked List Length: %d\n", length(list1_head));	// LENGTH
+
+	printf("Before delete at HEAD and TAIL...\n");
 	printList(list1_head);
 
 	list1_head = deleteAtHead(list1_head);
 	list1_head = deleteAtHead(list1_head);
-	printf("After delete at HEAD...\n");
+	printf("\nAfter delete at HEAD...\n");
 	printList(list1_head);
+	printf("Linked List Length: %d\n", length(list1_head));	// LENGTH
 
 	list1_head = deleteAtTail(list1_head);
 	list1_head = deleteAtTail(list1_head);
-	printf("After delete at TAIL...\n");
+	printf("\nAfter delete at TAIL...\n");
 	printList(list1_head);
+	printf("Linked List Length: %d\n\n", length(list1_head));	// LENGTH
 
 	return (0);
 }
@@ -61,6 +67,7 @@ Node	*insertAtHead(Node 	*head, int newValue)
 	// 	newNode->next = head;
 	// 	return (newNode);
 	// }
+	
 	// return (newNode);
 }
 
@@ -81,7 +88,22 @@ Node	*insertAtTail(Node 	*head, int newValue)
 	}
 }
 
-Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
+int	length(Node	*head)		// Find the LENGTH of a Linked List
+{
+	Node	*current;
+	current = head;
+	int		length = 0;
+
+	while (current != NULL)
+	{
+		length++;
+		current = current->next;
+	}
+
+	return (length);
+}
+
+Node	*deleteAtHead(Node	*head)
 {
 	if (head == NULL)
 		return (NULL);
@@ -93,7 +115,7 @@ Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
 	}
 }
 
-Node	*deleteAtTail(Node	*head)		// DELETE at the TAIL of a Linked List
+Node	*deleteAtTail(Node	*head)
 {
 	if (head == NULL)
 		return (NULL);
@@ -131,5 +153,4 @@ void	printList(Node	*head)
 		i++;
 		current = current->next;
 	}
-	printf("\n");
 }

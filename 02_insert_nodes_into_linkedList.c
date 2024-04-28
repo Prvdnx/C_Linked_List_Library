@@ -72,7 +72,7 @@ void	printList(Node	*head)
 {
 	Node	*current;
 	current = head;
-	int	i = 0;
+	int		i = 0;
 
 	while (current != NULL)
 	{
