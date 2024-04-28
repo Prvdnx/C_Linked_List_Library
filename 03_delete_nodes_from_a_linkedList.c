@@ -11,8 +11,8 @@ typedef struct	node
 void	printList(Node	*head);
 Node	*insertAtHead(Node	*head, int newValue);
 Node	*insertAtTail(Node 	*head, int newValue);
-Node	*deleteAtHead(Node	*head);		// Delete at the HEAD of a Linked List
-Node	*deleteAtTail(Node 	*head);		// Delete at the TAIL of a Linked List
+Node	*deleteAtHead(Node	*head);		// DELETE at the HEAD of a Linked List
+Node	*deleteAtTail(Node 	*head);		// DELETE at the TAIL of a Linked List
 
 int	main()
 {
@@ -81,7 +81,7 @@ Node	*insertAtTail(Node 	*head, int newValue)
 	}
 }
 
-Node	*deleteAtHead(Node	*head)		// Delete at the HEAD of a Linked List
+Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
 {
 	if (head == NULL)
 		return (NULL);
@@ -93,7 +93,7 @@ Node	*deleteAtHead(Node	*head)		// Delete at the HEAD of a Linked List
 	}
 }
 
-Node	*deleteAtTail(Node	*head)		// Delete at the TAIL of a Linked List
+Node	*deleteAtTail(Node	*head)		// DELETE at the TAIL of a Linked List
 {
 	if (head == NULL)
 		return (NULL);

@@ -9,8 +9,8 @@ typedef struct	node
 }	Node;
 
 void	printList(Node	*head);
-Node	*insertAtHead(Node	*head, int newValue);
-Node	*insertAtTail(Node 	*head, int newValue);
+Node	*insertAtHead(Node	*head, int newValue);		// INSERT at the HEAD of a Linked List
+Node	*insertAtTail(Node 	*head, int newValue);		// INSERT at the TAIL of a Linked List
 
 int	main()
 {
@@ -30,7 +30,7 @@ int	main()
 	return (0);
 }
 
-Node	*insertAtHead(Node 	*head, int newValue)
+Node	*insertAtHead(Node 	*head, int newValue)		// INSERT at the HEAD of a Linked List
 {
 	Node	*newNode = calloc(1, sizeof(Node));
 	newNode->value = newValue;
@@ -51,7 +51,7 @@ Node	*insertAtHead(Node 	*head, int newValue)
 	// return (newNode);
 }
 
-Node	*insertAtTail(Node 	*head, int newValue)
+Node	*insertAtTail(Node 	*head, int newValue)		// INSERT at the TAIL of a Linked List
 {
 	Node	*newNode = calloc(1, sizeof(Node));
 	newNode->value = newValue;
