@@ -27,58 +27,20 @@ int	main()
 	list1_head = insertAtTail(list1_head, 12);
 	list1_head = insertAtTail(list1_head, 14);
 
-	printf("\nBefore delete at HEAD and TAIL...\n");
+	printf("\nBefore DELETE at HEAD and TAIL...\n");
 	printList(list1_head);
 
 	list1_head = deleteAtHead(list1_head);
 	list1_head = deleteAtHead(list1_head);
-	printf("After delete at HEAD...\n");
+	printf("After DELETE at HEAD...\n");
 	printList(list1_head);
 
 	list1_head = deleteAtTail(list1_head);
 	list1_head = deleteAtTail(list1_head);
-	printf("After delete at TAIL...\n");
+	printf("After DELETE at TAIL...\n");
 	printList(list1_head);
 
 	return (0);
-}
-
-Node	*insertAtHead(Node 	*head, int newValue)
-{
-	Node	*newNode = calloc(1, sizeof(Node));
-	newNode->value = newValue;
-
-	if (head == NULL)
-		return (newNode);
-	else
-	{
-		newNode->next = head;
-		return (newNode);
-	}
-			// OR //
-	// if (head != NULL)
-	// {
-	// 	newNode->next = head;
-	// 	return (newNode);
-	// }
-	// return (newNode);
-}
-
-Node	*insertAtTail(Node 	*head, int newValue)
-{
-	Node	*newNode = calloc(1, sizeof(Node));
-	newNode->value = newValue;
-
-	if (head == NULL)
-		return (newNode);
-	else
-	{
-		Node	*current = head;
-		while (current->next != NULL)
-			current = current->next;
-		current->next = newNode;
-		return (head);
-	}
 }
 
 Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
@@ -115,6 +77,44 @@ Node	*deleteAtTail(Node	*head)		// DELETE at the TAIL of a Linked List
 
 		previous->next = NULL;
 		free (current);
+		return (head);
+	}
+}
+
+Node	*insertAtHead(Node 	*head, int newValue)
+{
+	Node	*newNode = calloc(1, sizeof(Node));
+	newNode->value = newValue;
+
+	if (head == NULL)
+		return (newNode);
+	else
+	{
+		newNode->next = head;
+		return (newNode);
+	}
+			// OR //
+	// if (head != NULL)
+	// {
+	// 	newNode->next = head;
+	// 	return (newNode);
+	// }
+	// return (newNode);
+}
+
+Node	*insertAtTail(Node 	*head, int newValue)
+{
+	Node	*newNode = calloc(1, sizeof(Node));
+	newNode->value = newValue;
+
+	if (head == NULL)
+		return (newNode);
+	else
+	{
+		Node	*current = head;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = newNode;
 		return (head);
 	}
 }
