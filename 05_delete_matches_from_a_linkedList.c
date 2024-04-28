@@ -22,65 +22,74 @@ void	replaceMatches(Node	*node, int findValue,
 								int replaceValue);	// Find & REPLACE Matches in a Linked List;
 Node	*deleteFirstMatch(Node	*head, int deleteValue,
 								bool *wasDeleted);	// DELETE the first node to have a MATCHING value with the passed value
+Node	*deleteAllMatches(Node	*head, int deleteValue,
+								int *numDeleted);	// DELETE all node to have a MATCHING value with the passed value
+
 
 int	main()
 {
-	Node	*list1_head;
+	Node	*myListHead;
 
-	list1_head = NULL;
+	myListHead = NULL;
 
-	list1_head = insertAtHead(list1_head, 7);
-	list1_head = insertAtHead(list1_head, 5);
-	list1_head = insertAtHead(list1_head, 3);
-	list1_head = insertAtTail(list1_head, 5);
-	list1_head = insertAtTail(list1_head, 10);
-	list1_head = insertAtTail(list1_head, 10);
-	list1_head = insertAtTail(list1_head, 12);
-	list1_head = insertAtTail(list1_head, 14);
+	myListHead = insertAtHead(myListHead, 7);
+	myListHead = insertAtHead(myListHead, 5);
+	myListHead = insertAtHead(myListHead, 3);
+	myListHead = insertAtTail(myListHead, 5);
+	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 10);
+	myListHead = insertAtTail(myListHead, 12);
+	myListHead = insertAtTail(myListHead, 14);
 
-	printf("\nLinked List LENGTH: %d\n", length(list1_head));	// LENGTH
+	// bool	deleted;
+	printf("\nList before DELETING Matches...\n");
+	printList(myListHead);
+	// myListHead = deleteFirstMatch(myListHead, 3, &deleted);	// DELETE the first node to have a MATCHING value
+	// if (deleted)
+	// {
+	// 	printf("\nA node with value 3 was deleted!\n");
+	// 	printf("List after DELETING...\n");
+	// 	printList(myListHead);
+	// }
+	// else
+	// 	printf("\nA node with value 3 was not deleted!\n");
 
-	printf("COUNT: Number of 5s: %d\n", countMatches(list1_head, 5));			// Find & COUNT Matches
-	printf("COUNT: Number of 10s: %d\n", countMatches(list1_head, 10));		// Find & COUNT Matches;
-	printf("COUNT: Number of 12s: %d\n", countMatches(list1_head, 12));		// Find & COUNT Matches;
-	printf("COUNT: Number of 8s: %d\n", countMatches(list1_head, 8));			// Find & COUNT Matches;
+	// myListHead = deleteFirstMatch(myListHead, 8, &deleted);	// DELETE the first node to have a MATCHING value
+	// if (deleted)
+	// {
+	// 	printf("\nA node with value 8 was deleted!\n");
+	// 	printf("List after DELETING...\n");
+	// 	printList(myListHead);
+	// }
+	// else
+	// 	printf("\nA node with value 8 was not deleted!\n");
 
-	printf("\nList before REPLACEMENT...\n");
-	printList(list1_head);
-	replaceMatches(list1_head, 5, 9);	// Find and REPLACE Matches in a Linked List
-	replaceMatches(list1_head, 14, 11);	// Find and REPLACE Matches in a Linked List
-	printf("\nList after REPLACEMENT...\n");
-	printList(list1_head);
+	// myListHead = deleteFirstMatch(myListHead, 10, &deleted);	// DELETE the first node to have a MATCHING value
+	// if (deleted)
+	// {
+	// 	printf("\nA node with value 10 was deleted!\n");
+	// 	printf("List after DELETING...\n");
+	// 	printList(myListHead);
+	// }
+	// else
+	// 	printf("\nA node with value 10 was not deleted!\n\n");
 
-	printf("\nBefore DELETE at HEAD and TAIL...\n");
-	printList(list1_head);
+	int	numDeleted;
+	myListHead = deleteAllMatches(myListHead, 5, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
+	printf("\n%d nodes with value 5 was deleted!\n", numDeleted);
+	printf("List after DELETING...\n");
+	printList(myListHead);	
 
-	list1_head = deleteAtHead(list1_head);
-	list1_head = deleteAtHead(list1_head);
-	printf("\nAfter DELETE at HEAD...\n");
-	printList(list1_head);
-	printf("Linked List LENGTH Recursive: %d\n", recursiveLength(list1_head));	// Recursive LENGTH
-
-	if (isMember(list1_head, 7))	// SEARCH list MEMBER
-		printf("SEARCH: 7 is in the list!\n");
-	else
-		printf("SEARCH: 7 is not in the list!\n");
-
-	if (isMember(list1_head, 8))	// SEARCH list MEMBER
-		printf("SEARCH: 8 is in the list!\n");
-	else
-		printf("SEARCH: 8 is not in the list!\n");
-
-	list1_head = deleteAtTail(list1_head);
-	list1_head = deleteAtTail(list1_head);
-	printf("\nAfter DELETE at TAIL...\n");
-	printList(list1_head);
-	printf("Linked List LENGTH: %d\n\n", length(list1_head));	// LENGTH
+	myListHead = deleteAllMatches(myListHead, 10, &numDeleted);	// DELETE all nodes to have a MATCHING value with the passed value
+	printf("\n%d nodes with value 10 was deleted!\n", numDeleted);
+	printf("List after DELETING...\n");
+	printList(myListHead);	
 
 	return (0);
 }
 
-Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted);	// DELETE the first node to have a MATCHING value with the passed value
+Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE the first node to have a MATCHING value with the passed value
 {
 	if (head == NULL)
 	{
@@ -103,11 +112,35 @@ Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted);	// DELETE
 	{
 		if (current->value == deleteValue)
 		{
-			prev
+			previous->next = current->next;
+			free (current);
+			*wasDeleted = true;
+			return (head);
 		}
+		
+		previous = current;
+		current = current->next;
 	}
+
+	*wasDeleted = false;
+	return (head);
 }
 
+Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes to have a MATCHING value with the passed value
+{
+	Node	*current = head;
+	bool	deleted = false;
+	*numDeleted = 0;
+
+	do
+	{
+		current = deleteFirstMatch(current, deleteValue, &deleted);
+		if (deleted)
+			*numDeleted = *numDeleted + 1;
+	} while (deleted);
+	
+	return (current);
+}
 
 int	length(Node	*head)		// Find the LENGTH of a Linked List
 {
