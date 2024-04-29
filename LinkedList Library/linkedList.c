@@ -1,5 +1,6 @@
 
 #include	"linkedList.h"
+#include	<stdlib.h>
 
 void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the values of another List
 {
