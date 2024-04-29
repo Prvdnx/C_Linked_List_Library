@@ -1,7 +1,7 @@
 
 #include	"linkedList.h"
 
-void	addLists(Node *list1, Node *list2)	//== ADD the values of one List to the values of another List
+void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the values of another List
 {
 	if (list1 == NULL || list2 == NULL)
 		return;
@@ -10,7 +10,7 @@ void	addLists(Node *list1, Node *list2)	//== ADD the values of one List to the v
 	addLists(list1->next, list2->next);
 }
 
-Node	*duplicateList(Node *node)	//== Create a DUPLICATE of a given List on the heap
+Node	*duplicateList(Node *node)	// Create a DUPLICATE of a given List on the heap
 {
 	if (node == NULL)
 		return (NULL);
@@ -23,7 +23,7 @@ Node	*duplicateList(Node *node)	//== Create a DUPLICATE of a given List on the h
 	return (newNode);
 }
 
-Node	*mergeSortedLists(Node *list1, Node *list2)	//== MERGE 2 Sorted Lists and return it as one Sorted List
+Node	*mergeSortedLists(Node *list1, Node *list2)	// MERGE 2 Sorted Lists and return it as one Sorted List
 {
 	if (list1 == NULL)
 		return (list2); 
