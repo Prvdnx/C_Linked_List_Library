@@ -59,7 +59,7 @@ int	main()
 	return (0);
 }
 
-Node	*insertAfter(Node *head, int newValue, int afterValue)	// INSERTING a node/value in Linked List after a particular node's value
+Node	*insertAfter(Node *head, int newValue, int afterValue)	//== INSERTING a node/value in Linked List after a particular node's value
 {
 	Node	*newNode = calloc(1, sizeof(Node));
 	newNode->value = newValue;
@@ -86,7 +86,7 @@ Node	*insertAfter(Node *head, int newValue, int afterValue)	// INSERTING a node/
 	}
 }
 
-Node	*deleteList(Node *node)		// DELETING a Linked List
+Node	*deleteList(Node *node)		//== DELETING a Linked List
 {
 	if (node != NULL)
 	{

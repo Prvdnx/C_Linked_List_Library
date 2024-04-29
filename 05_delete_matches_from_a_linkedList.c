@@ -90,7 +90,7 @@ int	main()
 	return (0);
 }
 
-Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE the first node to have a MATCHING value with the passed value
+Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	//== DELETE the first node to have a MATCHING value with the passed value
 {
 	if (head == NULL)
 	{
@@ -127,7 +127,7 @@ Node	*deleteFirstMatch(Node	*head, int deleteValue, bool *wasDeleted)	// DELETE 
 	return (head);
 }
 
-Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// DELETE all nodes with a value MATCHING with the passed value
+Node	*deleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	//== DELETE all nodes with a value MATCHING with the passed value
 {
 	Node	*current = head;
 	bool	deleted = false;

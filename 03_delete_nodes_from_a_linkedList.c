@@ -43,7 +43,7 @@ int	main()
 	return (0);
 }
 
-Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
+Node	*deleteAtHead(Node	*head)	//== DELETE at the HEAD of a Linked List
 {
 	if (head == NULL)
 		return (NULL);
@@ -55,7 +55,7 @@ Node	*deleteAtHead(Node	*head)		// DELETE at the HEAD of a Linked List
 	}
 }
 
-Node	*deleteAtTail(Node	*head)		// DELETE at the TAIL of a Linked List
+Node	*deleteAtTail(Node	*head)	//== DELETE at the TAIL of a Linked List
 {
 	if (head == NULL)
 		return (NULL);

@@ -80,7 +80,7 @@ int	main()
 	return (0);
 }
 
-void	sortList(Node *head)	// SORTING a Linked List
+void	sortList(Node *head)	//== SORTING a Linked List
 {
 	if (head == NULL)
 		return;
@@ -114,7 +114,7 @@ void	sortList(Node *head)	// SORTING a Linked List
 	} while (swapped);
 }
 
-void	deleteDuplicates(Node *head)	// REMOVING Duplicates from a Linked List
+void	deleteDuplicates(Node *head)	//== REMOVING Duplicates from a Linked List
 {
 	if (head == NULL)
 		return;

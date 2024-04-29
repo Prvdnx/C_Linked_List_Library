@@ -58,7 +58,7 @@ int	main()
 	return (0);
 }
 
-Node	*reverseList(Node *head)	// REVERSING a Linked List
+Node	*reverseList(Node *head)	//== REVERSING a Linked List
 {
 	if (head == NULL)
 		return (NULL); 
@@ -81,7 +81,7 @@ Node	*reverseList(Node *head)	// REVERSING a Linked List
 	return (current);
 }
 
-Node	*appendList(Node *head1, Node *head2)	// APPENDING (a node or list) to a Linked List
+Node	*appendList(Node *head1, Node *head2)	//== APPENDING (a node or list) to a Linked List
 {
 	if (head1 == NULL)
 		return (head2);

@@ -100,10 +100,32 @@ int	main()
 	printf("\nMy List_7 Duplicate...\n");
 	printList(myList7_dup);
 
+
+	//// MERGE SORTED LIST ////
+	srand(time(NULL));
+	Node	*myList8 = NULL;
+	Node	*myList9 = NULL;
+
+	for (int i = 0; i < 10; i++)
+		myList8 = insertAtHead(myList8, rand() % 99);
+	for (int i = 0; i < 10; i++)
+		myList9 = insertAtHead(myList9, rand() % 99);
+	sortList(myList8);
+	sortList(myList9);
+
+	printf("\nMy List_8...\n");
+	printList(myList8);	
+	printf("\nMy List_9...\n");
+	printList(myList9);
+
+	Node	*myNewList = mergeSortedLists(myList8, myList9);	// MERGE 2 Sorted Lists and return it as one Sorted List
+	printf("\nMy New List (Merged List)...\n");
+	printList(myNewList);
+
 	return (0);
 }
 
-void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the values of another List
+void	addLists(Node *list1, Node *list2)	//== ADD the values of one List to the values of another List
 {
 	if (list1 == NULL || list2 == NULL)
 		return;
@@ -112,7 +134,7 @@ void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the val
 	addLists(list1->next, list2->next);
 }
 
-Node	*duplicateList(Node *node)	// Create a DUPLICATE of a given List on the heap
+Node	*duplicateList(Node *node)	//== Create a DUPLICATE of a given List on the heap
 {
 	if (node == NULL)
 		return (NULL);
@@ -123,6 +145,61 @@ Node	*duplicateList(Node *node)	// Create a DUPLICATE of a given List on the hea
 	newNode->next = duplicateList(node->next);
 
 	return (newNode);
+}
+
+Node	*mergeSortedLists(Node *list1, Node *list2)	//== MERGE 2 Sorted Lists and return it as one Sorted List
+{
+	if (list1 == NULL)
+		return (list2); 
+	if (list2 == NULL)
+		return (list1);  
+
+	Node	*l1Current;
+	Node	*l2Current;
+	Node	*newHead;
+	Node	*newCurrent;
+
+	l1Current = list1; 
+	l2Current = list2;
+
+	if (l1Current->value <= l2Current->value)
+	{
+		newHead = l1Current;
+		l1Current = l1Current->next;
+	}
+	else 
+	{
+		newHead = l2Current;
+		l2Current = l2Current->next;
+	}
+	newCurrent = newHead;
+
+	while ((l1Current != NULL) && (l2Current != NULL))
+	{
+		if (l1Current->value <= l2Current->value)
+		{
+			newCurrent->next = l1Current;
+			newCurrent = l1Current;
+			l1Current = l1Current->next;
+		}
+		else 
+		{
+			newCurrent->next = l2Current;
+			newCurrent = l2Current; 
+			l2Current = l2Current->next;
+		}
+	}
+
+	if (l1Current == NULL)
+	{
+		newCurrent->next = l2Current;
+	}
+	else if (l2Current == NULL)
+	{
+		newCurrent->next = l1Current;
+	}
+
+	return (newHead);
 }
 
 Node	*insertAfter(Node *head, int newValue, int afterValue)	// INSERTING a node/value in Linked List after a particular node's value

@@ -77,7 +77,7 @@ int	main()
 	return (0);
 }
 
-int	length(Node	*head)		// Find the LENGTH of a Linked List
+int	length(Node	*head)	//== Find the LENGTH of a Linked List
 {
 	Node	*current;
 	current = head;
@@ -92,7 +92,7 @@ int	length(Node	*head)		// Find the LENGTH of a Linked List
 	return (length);
 }
 
-int	recursiveLength(Node	*node)		// Find the LENGTH of a Linked List recursively
+int	recursiveLength(Node	*node)	//== Find the LENGTH of a Linked List recursively
 {
 	if (node == NULL)
 		return (0);
@@ -100,7 +100,7 @@ int	recursiveLength(Node	*node)		// Find the LENGTH of a Linked List recursively
 		return (1 + recursiveLength(node->next));
 }
 
-bool	isMember(Node	*node, int findValue)	// SEARCH for a MEMBER in a Linked List
+bool	isMember(Node	*node, int findValue)	//== SEARCH for a MEMBER in a Linked List
 {
 	if (node == NULL)
 		return (false);
@@ -110,7 +110,7 @@ bool	isMember(Node	*node, int findValue)	// SEARCH for a MEMBER in a Linked List
 		return (isMember(node->next, findValue));
 }
 
-int	countMatches(Node	*node, int findValue)	// Find and COUNT Matches in a Linked List
+int	countMatches(Node	*node, int findValue)	//== Find and COUNT Matches in a Linked List
 {
 	if (node == NULL)
 		return (0);
@@ -120,7 +120,7 @@ int	countMatches(Node	*node, int findValue)	// Find and COUNT Matches in a Linke
 		return (countMatches(node->next, findValue));
 }
 
-void	replaceMatches(Node	*node, int findValue, int replaceValue)	// Find & REPLACE Matches in a Linked List;
+void	replaceMatches(Node	*node, int findValue, int replaceValue)	//== Find & REPLACE Matches in a Linked List;
 {
 	if (node != NULL)
 	{

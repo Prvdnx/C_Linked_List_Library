@@ -79,7 +79,7 @@ int	main()
 	return (0);
 }
 
-Node	*efficientDeleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	// Efficiently DELETE all nodes with a value MATCHING with the passed value
+Node	*efficientDeleteAllMatches(Node	*head, int deleteValue, int *numDeleted)	//== Efficiently DELETE all nodes with a value MATCHING with the passed value
 {
 	*numDeleted = 0;
 	if (head == NULL)
