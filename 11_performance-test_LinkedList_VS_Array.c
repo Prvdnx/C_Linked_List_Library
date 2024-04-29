@@ -40,87 +40,39 @@ Node	*mergeSortedLists(Node *list1, Node *list2);	// MERGE 2 Sorted Lists and re
 
 int	main()
 {
-	//// ADD LIST ////
-	Node	*myList1 = NULL;
-	Node	*myList2 = NULL;
-	Node	*myList3 = NULL;
-	Node	*myList4 = NULL;
-	Node	*myList5 = NULL;
-	Node	*myList6 = NULL;
+    int numElements = 10000;
+    clock_t tic;
+    clock_t toc;
+    
+    //// ARRAY ////
+    int *myArray = malloc(numElements * sizeof(int));
+    for (int i = 0; i < numElements; i++)
+        myArray[i] = i;
+    
+    tic = clock();
+    for (int i = 1; i < numElements; i++)
+    {
+        int *myNewArray = malloc((numElements - i) * sizeof(int));
+        for (int j = 0; j < numElements - i; j++)
+        {
+            myNewArray[j] = myArray[j + i];
+        }
+        free(myArray);
+        myArray = myNewArray;
+    }
+    toc = clock();
+    printf("Array-=>Elapsed: %f seconds\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    free(myArray);
 
-	for (int i = 1; i <= 5; i++) 
-		myList1 = insertAtHead(myList1, i);
-	for (int i = 8; i >= 4; i--)
-		myList2 = insertAtHead(myList2, i);
-
-	printf("\nMy List_1 Before ADDLIST Function...\n");
-	printList(myList1);
-	printf("\nMy List_2...\n");
-	printList(myList2);
-	addLists(myList1, myList2);	// ADD the values of one List to the values of another List
-	printf("\nMy List_1 After ADDLIST Function...\n");
-	printList(myList1);
-
-	for (int i = 1; i <= 2; i++) 
-		myList3 = insertAtHead(myList3, i);
-	for (int i = 4; i <= 7; i++)
-		myList4 = insertAtHead(myList4, i);
-
-	printf("\nMy List_3 Before ADDLIST Function...\n");
-	printList(myList3);
-	printf("\nMy List_4...\n");
-	printList(myList4);
-	addLists(myList3, myList4);	// ADD the values of one List to the values of another List
-	printf("\nMy List_3 After ADDLIST Function...\n");
-	printList(myList3);
-
-	for (int i = 4; i <= 7; i++)
-		myList5 = insertAtHead(myList5, i);
-	for (int i = 1; i <= 2; i++) 
-		myList6 = insertAtHead(myList6, i);
-
-	printf("\nMy List_5 Before ADDLIST Function...\n");
-	printList(myList5);
-	printf("\nMy List_6...\n");
-	printList(myList6);
-	addLists(myList5, myList6);	// ADD the values of one List to the values of another List
-	printf("\nMy List_5 After ADDLIST Function...\n");
-	printList(myList5);
-
-
-	//// DUPLICATE LIST ////
-	Node	*myList7 = NULL;
-
-	for (int i = 0; i < 10; i++)
-		myList7 = insertAtHead(myList7, i);
-
-	printf("\nMy List_7...\n");
-	printList(myList7);
-	Node	*myList7_dup = duplicateList(myList7);	// Create a DUPLICATE of a given List on the heap
-	printf("\nMy List_7 Duplicate...\n");
-	printList(myList7_dup);
-
-
-	//// MERGE SORTED LIST ////
-	srand(time(NULL));
-	Node	*myList8 = NULL;
-	Node	*myList9 = NULL;
-
-	for (int i = 0; i < 10; i++)
-		myList8 = insertAtHead(myList8, rand() % 99);
-	for (int i = 0; i < 10; i++)
-		myList9 = insertAtHead(myList9, rand() % 99);
-	sortList(myList8);
-	sortList(myList9);
-
-	printf("\nMy List_8...\n");
-	printList(myList8);	
-	printf("\nMy List_9...\n");
-	printList(myList9);
-
-	Node	*myNewList = mergeSortedLists(myList8, myList9);	// MERGE 2 Sorted Lists and return it as one Sorted List
-	printf("\nMy New List (Merged List)...\n");
-	printList(myNewList);
+    //// LINKED LIST ////
+    Node    *listp = NULL;
+    for (int i = 0; i < numElements; i++)
+        listp = insertAtHead(listp, i);
+    tic = clock();
+    for (int i = 0; i < numElements; i++)
+        listp = deleteAtHead(listp);
+    toc = clock();
+    printf("LinkedList-=>Elapsed: %f seconds\n", (double)(toc - tic) / CLOCKS_PER_SEC);
 
 	return (0);
 }
