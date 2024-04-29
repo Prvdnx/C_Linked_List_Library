@@ -37,9 +37,9 @@ int	main()
 	Node	*myList2 = NULL;
 
 	for (int i = 1; i <= 3; i++) 
-		myList1 = insertAtTail(myList1,i);
+		myList1 = insertAtTail(myList1, i);
 	for (int i = 4; i <= 10; i++)
-		myList2 = insertAtTail(myList2,i);
+		myList2 = insertAtTail(myList2, i);
 
 	printf("\nMy List_1 Before APPENDING...\n");
 	printList(myList1);

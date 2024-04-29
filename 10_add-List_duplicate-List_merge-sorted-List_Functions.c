@@ -34,10 +34,13 @@ void	deleteDuplicates(Node *head);	// REMOVING Duplicates from a Linked List
 Node	*insertAfter(Node *head, int newValue, int afterValue);	// INSERTING a node/value in Linked List after a particular node's value
 Node	*deleteList(Node *node);	// DELETING a Linked List
 void	addLists(Node *list1, Node *list2);	// ADD the values of one List to the values of another List
+Node	*duplicateList(Node *node);	// Create a DUPLICATE for a given List on the heap
+Node	*mergeSortedLists(Node *list1, Node *list2);	// MERGE 2 Sorted Lists and return it as one Sorted List
 
 
 int	main()
 {
+	//// ADD LIST ////
 	Node	*myList1 = NULL;
 	Node	*myList2 = NULL;
 	Node	*myList3 = NULL;
@@ -46,43 +49,56 @@ int	main()
 	Node	*myList6 = NULL;
 
 	for (int i = 1; i <= 5; i++) 
-		myList1 = insertAtHead(myList1,i);
+		myList1 = insertAtHead(myList1, i);
 	for (int i = 8; i >= 4; i--)
-		myList2 = insertAtHead(myList2,i);
+		myList2 = insertAtHead(myList2, i);
 
 	printf("\nMy List_1 Before ADDLIST Function...\n");
 	printList(myList1);
 	printf("\nMy List_2...\n");
 	printList(myList2);
-	addLists(myList1, myList2);
+	addLists(myList1, myList2);	// ADD the values of one List to the values of another List
 	printf("\nMy List_1 After ADDLIST Function...\n");
 	printList(myList1);
 
 	for (int i = 1; i <= 2; i++) 
-		myList3 = insertAtHead(myList3,i);
+		myList3 = insertAtHead(myList3, i);
 	for (int i = 4; i <= 7; i++)
-		myList4 = insertAtHead(myList4,i);
+		myList4 = insertAtHead(myList4, i);
 
 	printf("\nMy List_3 Before ADDLIST Function...\n");
 	printList(myList3);
 	printf("\nMy List_4...\n");
 	printList(myList4);
-	addLists(myList3, myList4);
+	addLists(myList3, myList4);	// ADD the values of one List to the values of another List
 	printf("\nMy List_3 After ADDLIST Function...\n");
 	printList(myList3);
 
 	for (int i = 4; i <= 7; i++)
-		myList5 = insertAtHead(myList5,i);
+		myList5 = insertAtHead(myList5, i);
 	for (int i = 1; i <= 2; i++) 
-		myList6 = insertAtHead(myList6,i);
+		myList6 = insertAtHead(myList6, i);
 
 	printf("\nMy List_5 Before ADDLIST Function...\n");
 	printList(myList5);
 	printf("\nMy List_6...\n");
 	printList(myList6);
-	addLists(myList5, myList6);
+	addLists(myList5, myList6);	// ADD the values of one List to the values of another List
 	printf("\nMy List_5 After ADDLIST Function...\n");
 	printList(myList5);
+
+
+	//// DUPLICATE LIST ////
+	Node	*myList7 = NULL;
+
+	for (int i = 0; i < 10; i++)
+		myList7 = insertAtHead(myList7, i);
+
+	printf("\nMy List_7...\n");
+	printList(myList7);
+	Node	*myList7_dup = duplicateList(myList7);	// Create a DUPLICATE of a given List on the heap
+	printf("\nMy List_7 Duplicate...\n");
+	printList(myList7_dup);
 
 	return (0);
 }
@@ -94,6 +110,19 @@ void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the val
 
 	list1->value = list1->value + list2->value;
 	addLists(list1->next, list2->next);
+}
+
+Node	*duplicateList(Node *node)	// Create a DUPLICATE of a given List on the heap
+{
+	if (node == NULL)
+		return (NULL);
+
+	Node	*newNode = calloc(sizeof(Node), 1);
+	newNode->value = node->value;
+
+	newNode->next = duplicateList(node->next);
+
+	return (newNode);
 }
 
 Node	*insertAfter(Node *head, int newValue, int afterValue)	// INSERTING a node/value in Linked List after a particular node's value
