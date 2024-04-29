@@ -37,6 +37,7 @@ void	addLists(Node *list1, Node *list2);	// ADD the values of one List to the va
 Node	*duplicateList(Node *node);	// Create a DUPLICATE for a given List on the heap
 Node	*mergeSortedLists(Node *list1, Node *list2);	// MERGE 2 Sorted Lists and return it as one Sorted List
 
+
 int	main()
 {
 	//// ADD LIST ////
