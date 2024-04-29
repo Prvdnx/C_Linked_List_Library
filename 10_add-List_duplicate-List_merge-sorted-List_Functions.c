@@ -33,32 +33,67 @@ void	sortList(Node *head);	// SORTING a Linked List
 void	deleteDuplicates(Node *head);	// REMOVING Duplicates from a Linked List
 Node	*insertAfter(Node *head, int newValue, int afterValue);	// INSERTING a node/value in Linked List after a particular node's value
 Node	*deleteList(Node *node);	// DELETING a Linked List
-
+void	addLists(Node *list1, Node *list2);	// ADD the values of one List to the values of another List
 
 
 int	main()
 {
-	Node	*myList = NULL;
+	Node	*myList1 = NULL;
+	Node	*myList2 = NULL;
+	Node	*myList3 = NULL;
+	Node	*myList4 = NULL;
+	Node	*myList5 = NULL;
+	Node	*myList6 = NULL;
 
-	myList = insertAtTail(myList, 1);
-	myList = insertAtTail(myList, 5);
-	myList = insertAtTail(myList, 3);
-	myList = insertAtTail(myList, 9);
-	myList = insertAtTail(myList, 8);
-	myList = insertAtTail(myList, 4);
-	myList = insertAtTail(myList, 7);
+	for (int i = 1; i <= 5; i++) 
+		myList1 = insertAtHead(myList1,i);
+	for (int i = 8; i >= 4; i--)
+		myList2 = insertAtHead(myList2,i);
 
-	printf("\nMy List Before INSERTING new node/value...\n");
-	printList(myList);
-	myList = insertAfter(myList, 122, 4);	// INSERTING a node/value in Linked List after a particular node's value
-	printf("\nMy List After INSERTING new node/value...\n");
-	printList(myList);
+	printf("\nMy List_1 Before ADDLIST Function...\n");
+	printList(myList1);
+	printf("\nMy List_2...\n");
+	printList(myList2);
+	addLists(myList1, myList2);
+	printf("\nMy List_1 After ADDLIST Function...\n");
+	printList(myList1);
 
-	myList = deleteList(myList);
-	printf("\nMy List After DELETING...\n");
-	printList(myList);	
+	for (int i = 1; i <= 2; i++) 
+		myList3 = insertAtHead(myList3,i);
+	for (int i = 4; i <= 7; i++)
+		myList4 = insertAtHead(myList4,i);
+
+	printf("\nMy List_3 Before ADDLIST Function...\n");
+	printList(myList3);
+	printf("\nMy List_4...\n");
+	printList(myList4);
+	addLists(myList3, myList4);
+	printf("\nMy List_3 After ADDLIST Function...\n");
+	printList(myList3);
+
+	for (int i = 4; i <= 7; i++)
+		myList5 = insertAtHead(myList5,i);
+	for (int i = 1; i <= 2; i++) 
+		myList6 = insertAtHead(myList6,i);
+
+	printf("\nMy List_5 Before ADDLIST Function...\n");
+	printList(myList5);
+	printf("\nMy List_6...\n");
+	printList(myList6);
+	addLists(myList5, myList6);
+	printf("\nMy List_5 After ADDLIST Function...\n");
+	printList(myList5);
 
 	return (0);
+}
+
+void	addLists(Node *list1, Node *list2)	// ADD the values of one List to the values of another List
+{
+	if (list1 == NULL || list2 == NULL)
+		return;
+
+	list1->value = list1->value + list2->value;
+	addLists(list1->next, list2->next);
 }
 
 Node	*insertAfter(Node *head, int newValue, int afterValue)	// INSERTING a node/value in Linked List after a particular node's value
