@@ -10,7 +10,7 @@ typedef struct	node
 	struct node	*next;
 }	Node;
 
-void	printList(Node	*head); // PRINT
+void	printList(Node	*head); // PRINTING Linked List
 Node	*insertAtHead(Node	*head, int newValue);   // INSERT at the HEAD of a Linked List
 Node	*insertAtTail(Node 	*head, int newValue);	// INSERT at the TAIL of a Linked List
 Node	*deleteAtHead(Node	*head); // DELETE at the HEAD of a Linked List
